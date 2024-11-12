@@ -17,3 +17,12 @@ export const UpdateBookControllerSchema = z.object({
 export type TUpdateBookControllerInput = z.TypeOf<
   typeof UpdateBookControllerSchema
 >;
+
+export const UpdateControllerUserRoleSchema = z.object({
+  userId: z.string(),
+  role: z.string(),
+});
+
+export type TUpadateUserRole = z.TypeOf<
+  typeof UpdateControllerUserRoleSchema
+>;

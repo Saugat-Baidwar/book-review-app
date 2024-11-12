@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { LoginControllerSchema, RegisterControllerSchema } from "./validation";
 import { createUserService, getUserById, loginService } from "./service";
 import { APIError } from "../../utils/error";
+import { updateUserRoleservice } from "../books/service";
 
 export async function registerController(
   req: Request,
@@ -25,6 +26,7 @@ export async function registerController(
     }
 
     const user = await createUserService(data);
+    
     
 
     res.status(201).json({
@@ -144,6 +146,31 @@ export async function meController(
       next(error);
     } else {
       next(new APIError(500, (error as Error).message));
+    }
+  }
+}
+
+export async function updateRoleController(req:Request,res:Response,next:NextFunction){
+  try{
+    const role = req.body.role;
+    const userId = req.body.userId;
+
+    console.log("checking.......",userId);
+
+    const User = await updateUserRoleservice({
+      userId : userId ||  "",
+      role:role || "user",
+    });
+    res.status(200).json({
+      message:"role has been update",
+      isSuccess:true,
+      data:null,
+    })
+  }catch(e){
+    if (e instanceof APIError){
+      next(e);
+    }else{
+      next(new APIError(500,(e as Error).message))
     }
   }
 }

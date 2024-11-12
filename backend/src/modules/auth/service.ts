@@ -4,20 +4,22 @@ import { UserModel } from "./model";
 import { TLoginControllerInput, TRegisterControllerInput } from "./validation";
 
 export async function createUserService(input: TRegisterControllerInput) {
-  const { email, username, password } = input;
+  const { email, username, password , role } = input;
 
   const user = await UserModel.findOne({ email });
   if (user) {
-    throw APIError.conflict("User already exists");
+    throw APIError.conflict("User email already exists");
   }
 
   const hashedPassword = await hashPassword(password);
+
+ 
 
   const newUser = new UserModel({
     email,
     username,
     password: hashedPassword,
-    role: "user",
+    role,
   });
 
   await newUser.save();

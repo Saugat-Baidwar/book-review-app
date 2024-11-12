@@ -1,7 +1,9 @@
 import { APIError } from "../../utils/error";
+import { UserModel } from "../auth/model";
 import { BookModel } from "./model";
 import {
   TAddBookControllerInput,
+  TUpadateUserRole,
   TUpdateBookControllerInput,
 } from "./validation";
 
@@ -70,3 +72,25 @@ export async function getBookByIdService(id: string) {
 
   return book;
 }
+
+export async function updateUserRoleservice(input:TUpadateUserRole) {
+  const { role, userId } = input;
+
+  const user = await UserModel.findOne({ _id: userId });
+
+  if (!user) {
+    throw APIError.notFound("user not found");
+  }
+
+  const result = await UserModel.findByIdAndUpdate(userId, {
+    $set: {
+      id: userId,
+      role: role,
+    },
+  });
+
+  
+
+  return true;
+}
+  

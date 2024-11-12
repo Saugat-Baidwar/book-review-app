@@ -4,6 +4,7 @@ export const RegisterControllerSchema = z.object({
   email: z.string().email(),
   username: z.string().min(3).max(20),
   password: z.string().min(6).max(25),
+  role: z.enum(["admin", "user"]).default("user"),
 });
 export type TRegisterControllerInput = z.TypeOf<
   typeof RegisterControllerSchema
