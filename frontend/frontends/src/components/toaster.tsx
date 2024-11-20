@@ -1,3 +1,4 @@
+
 import { toast } from "react-hot-toast";
 
 export function errorToast(message: string) {

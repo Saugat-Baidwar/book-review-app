@@ -1,3 +1,4 @@
+
 import { env } from "../../config";
 
 /**
@@ -70,7 +71,6 @@ export async function loginUser(
   });
 
   const data = await res.json();
-
   if (!res.ok) {
     throw new Error(data.message);
   }

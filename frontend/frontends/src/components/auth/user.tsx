@@ -1,5 +1,7 @@
+
 import { useMeQuery } from "../../api/auth/query";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const userData = {
   name: "Tom Cook",
   email: "tom@example.com",

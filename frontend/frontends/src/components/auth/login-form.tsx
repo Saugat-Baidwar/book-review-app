@@ -1,3 +1,4 @@
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -60,10 +61,10 @@ export function LoginForm() {
           <h2 className="text-base font-semibold leading-7 text-gray-900">
             Login
           </h2>
-          console.log(onSubmit)
           <p className="mt-1 text-sm leading-6 text-gray-600">
             You can login with your existing account.
           </p>
+
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label

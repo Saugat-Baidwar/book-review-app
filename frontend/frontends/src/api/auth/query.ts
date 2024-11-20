@@ -1,3 +1,4 @@
+
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   loginUser,
@@ -12,8 +13,7 @@ import {
   TRegisterUserOutput,
 } from "./fetch";
 
-// for Register api
-
+// for register api
 export function useRegisterUserMutation() {
   return useMutation<TRegisterUserOutput, Error, TRegisterUserInput>({
     mutationFn: registerUser,

@@ -8,15 +8,15 @@ import {
 } from "./validation";
 
 export async function createBookService(input: TAddBookControllerInput) {
-  const { title, genre, author, description } = input;
+  const { Title, genre, author, description } = input;
 
-  const book = await BookModel.findOne({ title });
+  const book = await BookModel.findOne({ Title });
   if (book) {
     throw APIError.conflict("Book already exists");
   }
 
   const newBook = new BookModel({
-    title,
+    Title,
     genre,
     author,
     description,
@@ -31,14 +31,14 @@ export async function updateBookService(
   bookId: string,
   input: TUpdateBookControllerInput
 ) {
-  const { title, genre, author, description } = input;
+  const { Title, genre, author, description } = input;
 
   const book = await BookModel.findById(bookId);
   if (!book) {
     throw APIError.notFound("Book not found");
   }
 
-  book.title = title;
+  book.Title = Title;
   book.genre = genre;
   book.author = author;
   book.description = description;
@@ -73,7 +73,7 @@ export async function getBookByIdService(id: string) {
   return book;
 }
 
-export async function updateUserRoleservice(input:TUpadateUserRole) {
+export async function updateUserRoleservice(input: TUpadateUserRole) {
   const { role, userId } = input;
 
   const user = await UserModel.findOne({ _id: userId });
@@ -89,8 +89,5 @@ export async function updateUserRoleservice(input:TUpadateUserRole) {
     },
   });
 
-  
-
   return true;
 }
-  
