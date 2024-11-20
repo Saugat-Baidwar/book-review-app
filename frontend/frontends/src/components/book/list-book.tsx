@@ -1,5 +1,6 @@
 
 import { useGetBooksQuery } from "../../api/book/query";
+import { DeleteBooks } from "./delete-book";
 
 export function ListBooks() {
   const { data, isLoading, isError, error } = useGetBooksQuery();
@@ -20,6 +21,7 @@ export function ListBooks() {
           <p className="text-sm italic">Author: {book.author}</p>
           <p className="text-sm italic">Genre: {book.genre}</p>
           <p>{book.description}</p>
+          <button> <DeleteBooks bookId={""}/></button>
         </div>
       ))}
     </div>

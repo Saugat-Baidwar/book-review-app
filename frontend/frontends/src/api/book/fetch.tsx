@@ -14,7 +14,7 @@ export type TBook = {
  * for add book api
  */
 export type TAddBookInput = {
-  title: string;
+  Title: string;
   author: string;
   genre: string;
   description: string;
@@ -27,7 +27,7 @@ export type TAddBookOutput = {
 };
 
 export async function addBook(input: TAddBookInput): Promise<TAddBookOutput> {
-  const res = await fetch(`${env.BACKEND_URL}/api/books`, {
+  const res = await fetch(`${env.BACKEND_URL}/api/books/addbook`, {
     method: "POST",
     credentials: "include",
     headers: {
@@ -50,7 +50,7 @@ export async function addBook(input: TAddBookInput): Promise<TAddBookOutput> {
 
 export type TUpdateBookInput = {
   bookId: string;
-  title: string;
+  Title: string;
   author: string;
   genre: string;
   description: string;
